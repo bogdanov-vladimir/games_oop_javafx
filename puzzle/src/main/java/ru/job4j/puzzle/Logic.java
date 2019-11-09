@@ -71,9 +71,8 @@ public class Logic {
     public boolean isWin() {
         int[][] table = this.convert();
         boolean result = false;
-        String[] sTableResult = new String[this.size];
-
-        int idxOneX = -1;
+        int iLen = this.size;
+        /*int idxOneX = -1;
         int idxOneY = -1;
         int iRes = this.size;
 
@@ -101,10 +100,53 @@ public class Logic {
 
         if(iRes == 0) {
             result = true;
+        }*/
+
+        for (int iCurRowIdx = 0; iCurRowIdx < iLen; iCurRowIdx++) {
+            if(table[iCurRowIdx][iCurRowIdx] == 1) {
+                for(int j = 0; j < iLen; j++) {
+                    if(table[iCurRowIdx][0] == 1) {
+                        if(table[iCurRowIdx][j] != 1) {
+                            result = false;
+                            break;
+                        } else if(result == false) {
+                            result = true;
+                        }
+                    } else if(table[0][iCurRowIdx] == 1) {
+                        if(table[j][iCurRowIdx] != 1) {
+                            result = false;
+                            break;
+                        } else if(result == false) {
+                            result = true;
+                        }
+                    }
+               }
+
+                break;
+            }
         }
 
         return result;
     }
+
+   /* private boolean checkToOne(int[][] table, int idxX, int idxY) {
+
+        boolean result = false;
+        if(idxX == -1) {
+
+
+        } else {
+
+        }
+
+        for (int i = 0; i < table.length; i++) {
+            if(table[i] != 1) {
+                return false;
+            }
+        }
+
+        return true;
+    }*/
 
     public int[][] convert() {
         int[][] table = new int[this.size][this.size];
