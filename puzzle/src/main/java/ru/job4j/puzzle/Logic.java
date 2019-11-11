@@ -100,7 +100,7 @@ public class Logic {
 
         if(iRes == 0) {
             result = true;
-        }*/
+        }
 
         for (int iCurRowIdx = 0; iCurRowIdx < iLen; iCurRowIdx++) {
             if(table[iCurRowIdx][iCurRowIdx] == 1) {
@@ -123,6 +123,22 @@ public class Logic {
                }
 
                 break;
+            }
+        }*/
+
+        for (int iCurRowIdx = 0; iCurRowIdx < iLen && result == false; iCurRowIdx++) {
+            int curVal = table[iCurRowIdx][iCurRowIdx];
+            int idxX = 0;
+            int idxY = 0;
+
+            for (int j = 0; j < iLen && curVal == 1; j++) {
+                idxX += table[iCurRowIdx][j];
+                idxY += table[j] [iCurRowIdx];
+
+                if (idxX == iLen || idxY == iLen) {
+                    result = true;
+                    break;
+                }
             }
         }
 
